@@ -15,6 +15,8 @@
       config.allowUnfree = true;
     };
 
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   default = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         modules = [
