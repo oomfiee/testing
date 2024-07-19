@@ -19,12 +19,12 @@ in
     disko
     wezterm
     # Calamares for graphical installation
-    libsForQt5.kpmcore
-    calamares-nixos
-    calamares-nixos-autostart
-    calamares-nixos-extensions
+    #libsForQt5.kpmcore
+    #calamares-nixos
+    #calamares-nixos-autostart
+    #calamares-nixos-extensions
     # Get list of locales
-    glibcLocales
+    #glibcLocales
   ];
 
 
@@ -42,7 +42,7 @@ in
       };
     };
 
-  boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_latest;
+  boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages;
   services.xserver.videoDrivers = ["nvidia"];
   nixpkgs.config.allowUnfree = true;
   boot.supportedFilesystems.zfs = lib.mkForce false;
