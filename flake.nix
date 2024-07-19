@@ -12,7 +12,7 @@ inputs = {
     url = "github:nix-community/nixos-generators";
     inputs.nixpkgs.follows = "nixpkgs";
   };
-
+};
 
 outputs = { self, nixpkgs, nixpkgs-stable, nixos-generators, ... } @ inputs:
   let
