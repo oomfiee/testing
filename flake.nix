@@ -1,28 +1,44 @@
 {
-  inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+inputs = {
+
+  # Follow the specified input
+  nixpkgs.follows = "nixpkgs-unstable";
+
+  # Nix packages
+  nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+  nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+  nixos-generators = {
+    url = "github:nix-community/nixos-generators";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, nixos-generators, ... }: {
+
+
+outputs = { self, nixpkgs, nixpkgs-stable, nixos-generators, ... } @ inputs:
+  let
+
+    system = "x86_64-linux"; # system arch
 
     lib = nixpkgs.lib;
 
     pkgs = import nixpkgs {
-      system = "x86_64-linux";
+      inherit system;
       config.allowUnfree = true;
     };
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
-  default = nixos-generators.nixosGenerate {
+    in {
+
+  iso = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         modules = [
-        ./iso.nix
+        ./Hosts/isoimage
         ];
         format = "iso";
       };
-  };
+};
 }
