@@ -11,7 +11,7 @@
     lib = nixpkgs.lib;
 
     pkgs = import nixpkgs {
-      inherit system;
+      system = "x86_64-linux";
       config.allowUnfree = true;
     };
 
