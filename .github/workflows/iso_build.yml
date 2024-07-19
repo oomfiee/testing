@@ -25,8 +25,6 @@ jobs:
       #with:
       #github_access_token: ${{ secrets.GITHUB_TOKEN }}
     - run: nix build .#iso
-    - name: Build
-      run: cargo build --release
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
