@@ -36,7 +36,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, nixos-generators, ... } @ inputs:
   iso = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         modules = [
-        ./Hosts/isoimage
+            "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
         ];
         format = "iso";
       };
