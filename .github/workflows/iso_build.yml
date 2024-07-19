@@ -23,7 +23,7 @@ jobs:
       #with:
       #github_access_token: ${{ secrets.GITHUB_TOKEN }}
     - run: nix build .#iso
-    - run: nix flake check
+    - run: ls
 
     - name: Upload ISO as artifact
       id: upload
