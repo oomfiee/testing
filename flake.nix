@@ -11,12 +11,10 @@ inputs = {
   nixos-generators = {
     url = "github:nix-community/nixos-generators";
     inputs.nixpkgs.follows = "nixpkgs";
-
-  flake-parts.url = "github:hercules-ci/flake-parts";
   };
 };
 
-outputs = { self, nixpkgs, nixpkgs-stable, nixos-generators, flake-parts, ... } @ inputs:
+outputs = { self, nixpkgs, nixpkgs-stable, nixos-generators, ... } @ inputs:
   let
 
     system = "x86_64-linux"; # system arch
