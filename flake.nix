@@ -8,13 +8,19 @@
   };
   outputs = { self, nixpkgs, nixos-generators, ... }: {
 
-  iso = nixos-generators.nixosGenerate {
+    lib = nixpkgs.lib;
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+  default = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         modules = [
         ./iso.nix
         ];
         format = "iso";
       };
-
   };
 }
