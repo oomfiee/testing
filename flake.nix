@@ -2,7 +2,7 @@
 inputs = {
 
   # Follow the specified input
-  nixpkgs.follows = "nixpkgs-stable";
+  nixpkgs.follows = "nixpkgs-unstable";
 
   # Nix packages
   nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
