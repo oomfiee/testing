@@ -1,4 +1,4 @@
-name: "Test"
+name: "Build ISO"
 on:
   workflow_dispatch:
   workflow_call:
@@ -34,3 +34,6 @@ jobs:
         file: ./result/iso/*.iso
         asset_name: ${{ github.workflow }}-${{ github.ref || github.run_id }}
         tag: ${{ github.ref }}
+        overwrite: true
+        #file_glob: true
+
