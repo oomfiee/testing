@@ -17,17 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-        uses: actions/checkout@v4
+      uses: actions/checkout@v4
     - name: install nix
-        uses: cachix/install-nix-action@v27
-        with:
-        github_access_token: ${{ secrets.GITHUB_TOKEN }}
-        - run: nix build
+      uses: cachix/install-nix-action@v27
+      with:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    - run: nix build
 
     - name: Upload ISO as artifact
-        id: upload
-        uses: actions/upload-artifact@v4
-        with:
+      id: upload
+      uses: actions/upload-artifact@v4
+      with:
           name: ${{ steps.build.outputs.iso_name }}
           path: |
             ${{ steps.build.outputs.iso_path }}
