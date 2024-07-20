@@ -4,25 +4,12 @@ let
 in
 {
   imports = [
-    "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   # Enable the Plasma 5 Desktop Environment.
 
-  services = {
-  xserver.enable = true;
-  desktopManager.plasma5.enable = true;
-    displayManager.sddm = {
-     enable = true;
-     #wayland.enable = true;
-    };
-    displayManager.sddm.settings = {        # Set sddm settings
-      Theme = {
-        CursorTheme = "breeze_cursors";
-      };
-    };
-  };
   environment.systemPackages = with pkgs; [
     firefox
     bcachefs-tools
@@ -32,12 +19,12 @@ in
     disko
     wezterm
     # Calamares for graphical installation
-    #libsForQt5.kpmcore
-    #calamares-nixos
-    #calamares-nixos-autostart
-    #calamares-nixos-extensions
+    libsForQt5.kpmcore
+    calamares-nixos
+    calamares-nixos-autostart
+    calamares-nixos-extensions
     # Get list of locales
-    #glibcLocales
+    glibcLocales
   ];
 
 
@@ -50,7 +37,7 @@ in
     # Automatically login as nixos.
       sddm.enable = true;
       autoLogin = {
-        enable = true;
+        enable = false;
         user = "nixos";
       };
     };
