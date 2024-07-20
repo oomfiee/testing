@@ -36,10 +36,6 @@ in
   services.displayManager = {
     # Automatically login as nixos.
       sddm.enable = true;
-      autoLogin = {
-        enable = false;
-        user = "nixos";
-      };
     };
 
   boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages;
