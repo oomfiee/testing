@@ -15,31 +15,16 @@ inputs = {
 };
 
 outputs = { self, nixpkgs, nixpkgs-stable, nixos-generators, ... } @ inputs:
-  let
+{
 
-    system = "x86_64-linux"; # system arch
-
-    lib = nixpkgs.lib;
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-
-    pkgs-stable = import nixpkgs-stable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-
-    in {
-
+  nixosConfigurations = {
   iso = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
         ./iso.nix
         ];
-        format = "iso";
       };
+};
 };
 }
