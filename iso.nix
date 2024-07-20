@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma5.nix"
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -43,8 +43,6 @@ in
     };
 
   boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages;
-  services.xserver.videoDrivers = ["nvidia"];
-  nixpkgs.config.allowUnfree = true;
   boot.supportedFilesystems.zfs = lib.mkForce false;
 }
 
