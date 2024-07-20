@@ -10,6 +10,19 @@ in
   nixpkgs.hostPlatform = "x86_64-linux";
   # Enable the Plasma 5 Desktop Environment.
 
+  services = {
+  xserver.enable = true;
+  desktopManager.plasma5.enable = true;
+    displayManager.sddm = {
+     enable = true;
+     #wayland.enable = true;
+    };
+    displayManager.sddm.settings = {        # Set sddm settings
+      Theme = {
+        CursorTheme = "breeze_cursors";
+      };
+    };
+  };
   environment.systemPackages = with pkgs; [
     firefox
     bcachefs-tools
