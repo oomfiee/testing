@@ -46,6 +46,5 @@ in
   services.xserver.videoDrivers = ["nvidia"];
   nixpkgs.config.allowUnfree = true;
   boot.supportedFilesystems.zfs = lib.mkForce false;
-  boot.supportedFilesystems = lib.mkForce [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" "bcachefs" ];
 }
 
