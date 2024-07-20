@@ -33,7 +33,8 @@ outputs = { self, nixpkgs, nixpkgs-stable, nixos-generators, ... } @ inputs:
 
     in {
 
-  iso = nixos-generators.nixosGenerate {
+  iso = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
         ./iso.nix

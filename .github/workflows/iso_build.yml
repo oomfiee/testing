@@ -26,7 +26,7 @@ jobs:
       uses: DeterminateSystems/flake-checker-action@main
       #with:
       #github_access_token: ${{ secrets.GITHUB_TOKEN }}
-    - run: nix-shell -p nixpkgs#nixos-generators --run \ "nixos-generate --format iso --configuration ./iso.nix -o result"
+    - run: nix build .#nixosConfigurations.iso.config.system.build.isoImage
     - name: Upload ISO as artifact
       id: upload
       uses: actions/upload-artifact@v4
